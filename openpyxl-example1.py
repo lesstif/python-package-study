@@ -1,19 +1,16 @@
+import datetime
+import math
+import constants
+
 from openpyxl import Workbook
+from openpyxl.utils import get_column_letter
 
 wb = Workbook()
 
-# grab the active worksheet
-ws = wb.active
+## 1번째 워크시트 생성
+ws1 = wb.active
+ws1.title = constants.EXCEL_TEST_WB_TITLE1
 
-# Data can be assigned directly to cells
-ws['A1'] = 42
+ws1['A1'] = datetime.datetime(2010, 7, 21)
 
-# Rows can also be appended
-ws.append([1, 2, 3])
-
-# Python types will automatically be converted
-import datetime
-ws['A2'] = datetime.datetime.now()
-
-# Save the file
-wb.save("sample.xlsx")
+wb.save(filename='example1.xlsx')
